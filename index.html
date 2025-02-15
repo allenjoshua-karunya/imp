@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine's Day ❤</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Press Start 2P', cursive;
+            text-align: center;
+            background: black;
+            color: red;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 2rem;
+            color: red;
+            text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.8);
+            animation: glow 1.5s infinite alternate;
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        button {
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: darkred;
+            transform: scale(1.05);
+        }
+
+        /* Hide Message and Gallery Pages by Default */
+        #message-page, #gallery-page {
+            display: none;
+        }
+
+        .message-page, .gallery-page {
+            margin-top: 20px;
+            padding: 20px;
+            background: black;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(255, 0, 0, 0.5);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .message-page {
+            width: 90%; /* Responsive width */
+            max-width: 800px; /* Maximum width for larger screens */
+            height: 80vh; /* Responsive height */
+            overflow-y: auto; /* Scrollable if content overflows */
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid red;
+            border-radius: 10px;
+            color: white;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Space between message and button */
+        }
+
+        .message-content {
+            flex-grow: 1; /* Takes up remaining space */
+            overflow-y: auto; /* Scrollable if content overflows */
+            padding-right: 10px; /* Prevents text from touching scrollbar */
+        }
+
+        .message-content p {
+            margin: 10px 0; /* Spacing between paragraphs */
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .gallery img {
+            width: 200px;
+            height: auto;
+            transition: transform 0.3s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(255, 0, 0, 0.8); }
+            to { text-shadow: 2px 2px 10px rgba(255, 0, 0, 1); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .flower {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            animation: fall linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Falling Flowers -->
+    <script>
+        function createFlower() {
+            const flower = document.createElement("div");
+            flower.classList.add("flower");
+            flower.style.left = Math.random() * window.innerWidth + "px";
+            flower.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(flower);
+
+            setTimeout(() => {
+                flower.remove();
+            }, 5000);
+        }
+
+        setInterval(createFlower, 300);
+    </script>
+
+    <!-- Landing Page -->
+    <div id="landing-page">
+        <h1>Happy Valentine's Day, My Love! ❤</h1>
+        <p>Enter the Date i proposed you here for a surprise!</p>
+        <input type="password" id="password" placeholder="Enter date 🤨">
+        <button onclick="checkPassword()">Unlock</button>
+    </div>
+
+    <!-- Message Page -->
+    <div class="message-page" id="message-page">
+        <div class="message-content">
+            <p>hello chemmulaaa,</p>
+            <p>you already know i suck at all this cheesy, romantic stuff, but here i am, trying anyway, because you're worth it.</p>
+            <p>i don't think i can put into words how much you mean to me, but this is best idea i cud come up with so, i’ll try. u are, without any doubt, the best thing that has ever happened to me. like, i wake up thinking about you, i go to sleep thinking about you, and in between all that, my brain plays reruns of our cute moments like the damn cricket highlights i always watch on tv.</p>
+            <p>ngl u drive me insane (in the best way possible (honestly tho 😭)). You got me kicking feet n shit like i'm a fucking child, you somehow make distance feel bearable (i still hate it), and you just... get me. and that's crazy, cause i’m a whole mess, yet you look at me like i’m something special.</p>
+            <p>also i miss you more than i can put into words, and if I start talking about how much i want to be with you right now, i might actually lose it. i want u to know that you are my favorite person, my best decision, and the only person who could ever make me willingly write a whole-ass love letter.</p>
+            <p>so, yes darling. I love you.</p>
+            <p>HAPPIEEE VALENTINE'S DAYYYYYY <3!!!</p>
+        </div>
+        <button onclick="goToGallery()">Click Here</button>
+    </div>
+
+    <!-- Gallery Page -->
+    <div class="gallery-page" id="gallery-page">
+        <h2>You and me belong together, like cold iced tea and warmer weather!</h2>
+        <div class="gallery">
+            <img src="images/photo1.jpg" alt="you and me">
+        </div>
+    </div>
+
+    <script>
+        // Password Check
+        function checkPassword() {
+            const input = document.getElementById("password").value;
+            const correctPassword = "20082023";
+            
+            if (input === correctPassword) {
+                // Trigger confetti
+                confetti({
+                    particleCount: 200,
+                    spread: 75,
+                    origin: { y: 0.6 }
+                });
+
+                // Hide Landing Page and show Message Page
+                document.getElementById("landing-page").style.display = "none";
+                document.getElementById("message-page").style.display = "block";
+            } else {
+                alert("Wrong password! Try again.");
+            }
+        }
+
+        // Go to Gallery
+        function goToGallery() {
+            document.getElementById("message-page").style.display = "none";
+            document.getElementById("gallery-page").style.display = "block";
+        }
+    </script>
+</body>
+</html>
